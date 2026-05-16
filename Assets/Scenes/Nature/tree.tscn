@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxdtbe7ago22r"]
+
+[ext_resource type="PackedScene" uid="uid://cy5vx8knqco5f" path="res://LowPolyNature.glb" id="1_pj42u"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pj42u"]
+radius = 0.0958962
+height = 4.215
+
+[node name="Tree" instance=ExtResource("1_pj42u")]
+
+[node name="CollisionShape3D" parent="Trunk/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08964, 0)
+shape = SubResource("CapsuleShape3D_pj42u")

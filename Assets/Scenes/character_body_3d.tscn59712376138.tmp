@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://l2ce28omlltd"]
+
+[ext_resource type="Script" uid="uid://dkp2keyg3dctr" path="res://Assets/Scenes/character_body_3d.gd" id="1_rgr6h"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rgr6h"]
+radius = 0.312026
+height = 1.95753
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rgr6h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b65pp"]
+albedo_color = Color(0.54162, 0.667413, 0.934173, 1)
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+collision_mask = 6
+input_ray_pickable = false
+script = ExtResource("1_rgr6h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_rgr6h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_rgr6h")
+surface_material_override/0 = SubResource("StandardMaterial3D_b65pp")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.56296)
+visible = false
+shadow_enabled = true
+distance_fade_enabled = true
+spot_range = 13.207
+spot_angle = 21.5

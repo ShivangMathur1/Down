@@ -1,0 +1,116 @@
+[gd_scene load_steps=15 format=3 uid="uid://bvyl50l6ixsmn"]
+
+[ext_resource type="PackedScene" uid="uid://l2ce28omlltd" path="res://Assets/Scenes/character_body_3d.tscn" id="1_1ipgw"]
+[ext_resource type="Texture2D" uid="uid://ul4vl05n3lva" path="res://Assets/qwantani_dusk_1_puresky_2k.exr" id="1_fnr3x"]
+[ext_resource type="PackedScene" uid="uid://bxdtbe7ago22r" path="res://Assets/Scenes/tree.tscn" id="2_1ipgw"]
+[ext_resource type="PackedScene" uid="uid://bleao6xascxwx" path="res://Assets/Scenes/Nature/rock1.tscn" id="4_vfy22"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vfy22"]
+panorama = ExtResource("1_fnr3x")
+
+[sub_resource type="Sky" id="Sky_6lc8i"]
+sky_material = SubResource("PanoramaSkyMaterial_vfy22")
+
+[sub_resource type="Environment" id="Environment_6bbw0"]
+background_mode = 2
+background_energy_multiplier = 0.45
+sky = SubResource("Sky_6lc8i")
+tonemap_mode = 2
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3c6we"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fnr3x"]
+albedo_color = Color(0.47685, 0.826645, 0.254215, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_p6hf8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vfy22"]
+albedo_color = Color(0.851769, 0.851769, 0.851769, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6lc8i"]
+material = SubResource("StandardMaterial3D_vfy22")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6bbw0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vfy22"]
+size = Vector3(1, 1, 5.01074)
+
+[node name="Level0" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6bbw0")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_1ipgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.27368, 1.07161, 3.79599)
+up_direction = Vector3(0, 0, -1)
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, 0, 0)
+
+[node name="Plane" type="StaticBody3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane"]
+shape = SubResource("WorldBoundaryShape3D_3c6we")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Plane"]
+material_override = SubResource("StandardMaterial3D_fnr3x")
+mesh = SubResource("PlaneMesh_p6hf8")
+
+[node name="Trees" type="Node3D" parent="."]
+
+[node name="Tree" parent="Trees" instance=ExtResource("2_1ipgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88793, 0.023483, -0.685427)
+
+[node name="Tree2" parent="Trees" instance=ExtResource("2_1ipgw")]
+transform = Transform3D(0.507538, 0, 0.861629, 0, 1, 0, -0.861629, 0, 0.507538, 7.84793, 0.023483, 5.89582)
+
+[node name="Tree3" parent="Trees" instance=ExtResource("2_1ipgw")]
+transform = Transform3D(0.968148, 0, 0.25038, 0, 1, 0, -0.25038, 0, 0.968148, 2.57221, 0.023483, -10.5533)
+
+[node name="Tree4" parent="Trees" instance=ExtResource("2_1ipgw")]
+transform = Transform3D(-0.398749, 0, 0.91706, 0, 1, 0, -0.91706, 0, -0.398749, -3.95868, 0.023483, -10.3686)
+
+[node name="Tree5" parent="Trees" instance=ExtResource("2_1ipgw")]
+transform = Transform3D(-0.95424, 0, 0.299041, 0, 1, 0, -0.299041, 0, -0.95424, -0.137338, 0.023483, -8.61407)
+
+[node name="Tree6" parent="Trees" instance=ExtResource("2_1ipgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5602, 0.023483, -3.74876)
+
+[node name="Tree7" parent="Trees" instance=ExtResource("2_1ipgw")]
+transform = Transform3D(0.748956, 0, -0.66262, 0, 1, 0, 0.66262, 0, 0.748956, 9.06589, 0.023483, 2.79382)
+
+[node name="DirectionalLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999848, 0.0174524, 0, -0.0174524, 0.999848, 4.55637, 2.87645, 0)
+light_energy = 7.788
+shadow_enabled = true
+omni_range = 17.8593
+omni_attenuation = 2.0
+
+[node name="Rock1" parent="." instance=ExtResource("4_vfy22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18205, 0.391811, -5.12262)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(9.40227, 0, 0, 0, 7.13352, 0, 0, 0, 1, 1.57076, 3.57596, 7.62697)
+mesh = SubResource("BoxMesh_6lc8i")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGMesh3D"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGMesh3D/StaticBody3D"]
+transform = Transform3D(0.99999, 0.00452039, 0, -0.00452039, 0.99999, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_6bbw0")
+
+[node name="Area3D" type="Area3D" parent="CSGMesh3D"]
+collision_layer = 2
+collision_mask = 5
+input_ray_pickable = false
+gravity_space_override = 3
+gravity_point_center = Vector3(0, 0, 1)
+gravity_direction = Vector3(0, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGMesh3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.00537)
+shape = SubResource("BoxShape3D_vfy22")
