@@ -1,21 +1,61 @@
-[gd_scene load_steps=18 format=3 uid="uid://bvyl50l6ixsmn"]
+[gd_scene load_steps=21 format=3 uid="uid://bvyl50l6ixsmn"]
 
 [ext_resource type="PackedScene" uid="uid://l2ce28omlltd" path="res://Assets/Scenes/character_body_3d.tscn" id="1_1ipgw"]
-[ext_resource type="Texture2D" uid="uid://ul4vl05n3lva" path="res://Assets/qwantani_dusk_1_puresky_2k.exr" id="1_fnr3x"]
+[ext_resource type="Texture2D" uid="uid://ul4vl05n3lva" path="res://Assets/qwantani_dusk_1_puresky_2k.exr" id="1_6bbw0"]
 [ext_resource type="PackedScene" uid="uid://bxdtbe7ago22r" path="res://Assets/Scenes/Nature/tree.tscn" id="2_1ipgw"]
-[ext_resource type="PackedScene" uid="uid://bleao6xascxwx" path="res://Assets/Scenes/Nature/rock1.tscn" id="4_vfy22"]
+[ext_resource type="PackedScene" uid="uid://do7375lrlcqn7" path="res://Assets/Scenes/Nature/rock_circle.tscn" id="4_vfy22"]
+[ext_resource type="PackedScene" uid="uid://3wq4tb0vte8w" path="res://Assets/Scenes/planet.tscn" id="5_6lc8i"]
+[ext_resource type="PackedScene" uid="uid://dv24mw3gy02ae" path="res://Assets/Scenes/sempra.tscn" id="6_6bbw0"]
+[ext_resource type="Material" uid="uid://dggwupqjoy5ik" path="res://Assets/Materials/s_tornado.material" id="7_umutp"]
+[ext_resource type="ArrayMesh" uid="uid://c5cqo3k2sq0hp" path="res://Assets/Meshes/Tornado.res" id="8_o4bpx"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vfy22"]
-panorama = ExtResource("1_fnr3x")
+[sub_resource type="Animation" id="Animation_6lc8i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.507612, 0, 0)]
+}
 
-[sub_resource type="Sky" id="Sky_6lc8i"]
-sky_material = SubResource("PanoramaSkyMaterial_vfy22")
+[sub_resource type="Animation" id="Animation_vfy22"]
+resource_name = "turn"
+length = 300.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 299.833),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.507612, 0, 0), Vector3(-0.507891, 6.28319, 0)]
+}
 
-[sub_resource type="Environment" id="Environment_6bbw0"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6bbw0"]
+_data = {
+&"RESET": SubResource("Animation_6lc8i"),
+&"turn": SubResource("Animation_vfy22")
+}
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_p6hf8"]
+panorama = ExtResource("1_6bbw0")
+
+[sub_resource type="Sky" id="Sky_umutp"]
+sky_material = SubResource("PanoramaSkyMaterial_p6hf8")
+
+[sub_resource type="Environment" id="Environment_vfy22"]
 background_mode = 2
-background_energy_multiplier = 0.3
-sky = SubResource("Sky_6lc8i")
-tonemap_mode = 2
+background_energy_multiplier = 0.25
+sky = SubResource("Sky_umutp")
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3c6we"]
 
@@ -24,32 +64,34 @@ albedo_color = Color(0.47685, 0.826645, 0.254215, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_p6hf8"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lc8i"]
-albedo_color = Color(0.47451, 1, 0.278431, 1)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_vfy22"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_6bbw0"]
-radius = 0.882766
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vfy22"]
-albedo_color = Color(0.851769, 0.851769, 0.851769, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_6lc8i"]
-material = SubResource("StandardMaterial3D_vfy22")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6bbw0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vfy22"]
-size = Vector3(1, 1, 4.31494)
+size = Vector3(1, 1.29285, 1)
 
 [node name="Level0" type="Node3D"]
 
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.873908, 0.486092, 0, -0.486092, 0.873908, 0, 0, 0)
+light_color = Color(1, 1, 0.819608, 1)
+light_energy = 0.2
+shadow_enabled = true
+sky_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DirectionalLight3D2"]
+libraries = {
+&"": SubResource("AnimationLibrary_6bbw0")
+}
+autoplay = "turn"
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_6bbw0")
+environment = SubResource("Environment_vfy22")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_1ipgw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.27368, 3.22851, -2.62507)
+rocket_speed = 20.0
 
 [node name="Plane" type="StaticBody3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
@@ -62,65 +104,51 @@ shape = SubResource("WorldBoundaryShape3D_3c6we")
 material_override = SubResource("StandardMaterial3D_fnr3x")
 mesh = SubResource("PlaneMesh_p6hf8")
 
-[node name="Trees" type="Node3D" parent="."]
+[node name="Trees" type="Node3D" parent="Plane"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 
-[node name="Tree" parent="Trees" instance=ExtResource("2_1ipgw")]
+[node name="Tree" parent="Plane/Trees" instance=ExtResource("2_1ipgw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88793, 0.023483, -0.685427)
 
-[node name="Tree2" parent="Trees" instance=ExtResource("2_1ipgw")]
+[node name="Tree2" parent="Plane/Trees" instance=ExtResource("2_1ipgw")]
 transform = Transform3D(0.507538, 0, 0.861629, 0, 1, 0, -0.861629, 0, 0.507538, 7.84793, 0.023483, 5.89582)
 
-[node name="Tree3" parent="Trees" instance=ExtResource("2_1ipgw")]
+[node name="Tree3" parent="Plane/Trees" instance=ExtResource("2_1ipgw")]
 transform = Transform3D(0.968148, 0, 0.25038, 0, 1, 0, -0.25038, 0, 0.968148, 2.57221, 0.023483, -10.5533)
 
-[node name="Tree4" parent="Trees" instance=ExtResource("2_1ipgw")]
-transform = Transform3D(-0.398749, 0, 0.91706, 0, 1, 0, -0.91706, 0, -0.398749, -3.95868, 0.023483, -10.3686)
+[node name="Tree4" parent="Plane/Trees" instance=ExtResource("2_1ipgw")]
+transform = Transform3D(-0.398749, 0, 0.91706, 0, 1, 0, -0.91706, 0, -0.398749, -10.79, 0.023483, -8.58506)
 
-[node name="Tree5" parent="Trees" instance=ExtResource("2_1ipgw")]
-transform = Transform3D(-0.95424, 0, 0.299041, 0, 1, 0, -0.299041, 0, -0.95424, -0.137338, 0.023483, -8.61407)
+[node name="Tree5" parent="Plane/Trees" instance=ExtResource("2_1ipgw")]
+transform = Transform3D(-0.95424, 0, 0.299041, 0, 1, 0, -0.299041, 0, -0.95424, -11.0746, 0.023483, 0.984531)
 
-[node name="Tree6" parent="Trees" instance=ExtResource("2_1ipgw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5602, 0.023483, -3.74876)
+[node name="Tree6" parent="Plane/Trees" instance=ExtResource("2_1ipgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.46676, 0.023483, -15.7238)
 
-[node name="Tree7" parent="Trees" instance=ExtResource("2_1ipgw")]
+[node name="Tree8" parent="Plane/Trees" instance=ExtResource("2_1ipgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.59951, 0.023483, 12.589)
+
+[node name="Tree9" parent="Plane/Trees" instance=ExtResource("2_1ipgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.08377, 0.023484, 15.1159)
+
+[node name="Tree7" parent="Plane/Trees" instance=ExtResource("2_1ipgw")]
 transform = Transform3D(0.748956, 0, -0.66262, 0, 1, 0, 0.66262, 0, 0.748956, 9.06589, 0.023483, 2.79382)
 
+[node name="RockCircle" parent="Plane" instance=ExtResource("4_vfy22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.023902, 2.38419e-08, -0.218186)
+
 [node name="DirectionalLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999848, 0.0174524, 0, -0.0174524, 0.999848, 4.55637, 2.87645, 0)
-light_energy = 7.788
+transform = Transform3D(1, 0, 0, 0, 0.999848, 0.0174524, 0, -0.0174524, 0.999848, -0.616507, 2.87645, -4.69135)
+light_energy = 7.5
 shadow_enabled = true
 omni_range = 17.8593
 omni_attenuation = 2.0
 
-[node name="Rock1" parent="." instance=ExtResource("4_vfy22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18205, 0.391811, -5.12262)
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
-transform = Transform3D(7.79262, -0.0016876, -0.00137623, 0.00168732, 7.79262, -0.0015463, 0.00137657, 0.001546, 7.79262, -14.0483, 7.50064, 9.63505)
-material_override = SubResource("StandardMaterial3D_6lc8i")
-radial_segments = 16
-rings = 16
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CSGSphere3D"]
-collision_layer = 2
-collision_mask = 5
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGSphere3D/StaticBody3D"]
-shape = SubResource("SphereShape3D_vfy22")
-
-[node name="Area3D" type="Area3D" parent="CSGSphere3D"]
-collision_layer = 2
-collision_mask = 5
-gravity_space_override = 3
-gravity_point = true
-gravity_point_center = Vector3(0, 0, 0)
-gravity_direction = Vector3(0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGSphere3D/Area3D"]
-shape = SubResource("SphereShape3D_6bbw0")
+[node name="Planet" parent="." instance=ExtResource("5_6lc8i")]
+transform = Transform3D(54.4882, -0.0118001, -0.00962303, 0.0117982, 54.4882, -0.0108122, 0.00962537, 0.0108101, 54.4882, 0.0747662, 29.2252, -67.9757)
 
 [node name="GravWall" type="CSGMesh3D" parent="."]
-transform = Transform3D(9, 0, 0, 0, 7, 0, 0, 0, 1, 1.57076, 3.57596, 7.62697)
+transform = Transform3D(9, 0, 0, 0, 7, 0, 0, 0, 1, -0.82233, 3.57596, 7.62697)
 mesh = SubResource("BoxMesh_6lc8i")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="GravWall"]
@@ -132,7 +160,7 @@ transform = Transform3D(0.99999, 0.00452039, 0, -0.00452039, 0.99999, 0, 0, 0, 1
 shape = SubResource("BoxShape3D_6bbw0")
 
 [node name="Area3D" type="Area3D" parent="GravWall"]
-collision_layer = 2
+collision_layer = 8
 collision_mask = 5
 input_ray_pickable = false
 monitorable = false
@@ -141,5 +169,23 @@ gravity_point_center = Vector3(0, 0, 1)
 gravity_direction = Vector3(0, 0, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GravWall/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.65747)
+transform = Transform3D(1, 0, 0, 0, -0.0067892, 0.999977, 0, -0.999977, -0.0067892, 0, 0.0016945, -1.13558)
 shape = SubResource("BoxShape3D_vfy22")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="GravWall"]
+
+[node name="Label3D" type="Label3D" parent="GravWall"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.873752)
+double_sided = false
+texture_filter = 0
+modulate = Color(0, 1, 1, 1)
+text = "Floor"
+font_size = 20
+
+[node name="Sempra" parent="." instance=ExtResource("6_6bbw0")]
+transform = Transform3D(0.615441, 0, -0.788183, 0, 1, 0, 0.788183, 0, 0.615441, 125.665, 79.9891, 1.86848)
+
+[node name="Tornado" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.63297, 0, 0, 0, 1.63297, 0, 0, 0, 1.63297, -8.37728, 1.00253, 32.6651)
+material_override = ExtResource("7_umutp")
+mesh = ExtResource("8_o4bpx")

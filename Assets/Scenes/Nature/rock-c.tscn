@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b25xk1jtr3n7y"]
+
+[ext_resource type="ArrayMesh" uid="uid://vy3qau7jlaca" path="res://Assets/Meshes/Rock3.res" id="1_c4bwc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c4bwc"]
+radius = 0.606281
+height = 2.17013
+
+[node name="Rock-C" type="StaticBody3D"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.99883, 0.509067, 0.150862, -0.395175, 0.498108, 0.935573, 0.354606, -0.878811, 0.617669, -0.0515957, 0.0799934, -0.0651966)
+shape = SubResource("CapsuleShape3D_c4bwc")
+
+[node name="Rock3" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_c4bwc")

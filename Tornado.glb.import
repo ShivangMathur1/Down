@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cy5vx8knqco5f"
-path="res://.godot/imported/LowPolyNature.glb-7195129763df7057670f96f324f2cd37.scn"
+uid="uid://ilxeifpnyqwi"
+path="res://.godot/imported/Tornado.glb-9ad6ca5b049e0ea8583caba1de81eb5a.scn"
 
 [deps]
 
-source_file="res://LowPolyNature.glb"
-dest_files=["res://.godot/imported/LowPolyNature.glb-7195129763df7057670f96f324f2cd37.scn"]
+source_file="res://Tornado.glb"
+dest_files=["res://.godot/imported/Tornado.glb-9ad6ca5b049e0ea8583caba1de81eb5a.scn"]
 
 [params]
 
@@ -26,7 +26,7 @@ meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
-animation/import=false
+animation/import=true
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
@@ -34,20 +34,13 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "meshes": {
-"LowPolyNature_Cylinder_005": {
+"Tornado_Cylinder_002": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://Assets/Meshes/tree.res"
-}
-},
-"nodes": {
-"PATH:Trunk": {
-"generate/physics": true,
-"physics/layer": 2,
-"physics/mask": 5
+"save_to_file/path": "res://Assets/Meshes/Tornado.res"
 }
 }
 }

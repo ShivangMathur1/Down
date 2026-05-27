@@ -82,3 +82,4 @@ Escape={
 3d_physics/layer_1="Player"
 3d_physics/layer_2="Static Environment"
 3d_physics/layer_3="Dynamic Environment"
+3d_physics/layer_4="Gravity Fields"

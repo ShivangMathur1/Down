@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cy5vx8knqco5f"
-path="res://.godot/imported/LowPolyNature.glb-7195129763df7057670f96f324f2cd37.scn"
+uid="uid://csjy14mxjxbv4"
+path="res://.godot/imported/Sempra.glb-84f6fa1b80e3fa2cf6d4d162082419f8.scn"
 
 [deps]
 
-source_file="res://LowPolyNature.glb"
-dest_files=["res://.godot/imported/LowPolyNature.glb-7195129763df7057670f96f324f2cd37.scn"]
+source_file="res://Sempra.glb"
+dest_files=["res://.godot/imported/Sempra.glb-84f6fa1b80e3fa2cf6d4d162082419f8.scn"]
 
 [params]
 
@@ -26,7 +26,7 @@ meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
-animation/import=false
+animation/import=true
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
@@ -34,20 +34,13 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "meshes": {
-"LowPolyNature_Cylinder_005": {
+"Sempra_Icosphere": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://Assets/Meshes/tree.res"
-}
-},
-"nodes": {
-"PATH:Trunk": {
-"generate/physics": true,
-"physics/layer": 2,
-"physics/mask": 5
+"save_to_file/path": "res://Assets/Meshes/sempra_mesh.res"
 }
 }
 }

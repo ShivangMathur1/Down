@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk8t1f180ho3t"]
+
+[ext_resource type="Script" uid="uid://w06gh3xq3npr" path="res://Assets/Scenes/gravity_detector.gd" id="1_75ulb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rgr6h"]
+
+[node name="GravityDetector" type="Area3D"]
+collision_mask = 8
+input_ray_pickable = false
+monitorable = false
+script = ExtResource("1_75ulb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.765192, 0, 0, 0, 0.765192, 0, 0, 0, 0.765192, 0, 0, 0)
+shape = SubResource("SphereShape3D_rgr6h")

@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://do7375lrlcqn7"]
+
+[ext_resource type="PackedScene" uid="uid://bleao6xascxwx" path="res://Assets/Scenes/Nature/rock-a.tscn" id="1_juaxc"]
+[ext_resource type="PackedScene" uid="uid://6e7g3isge31e" path="res://Assets/Scenes/Nature/rock-b.tscn" id="2_1370j"]
+[ext_resource type="PackedScene" uid="uid://b25xk1jtr3n7y" path="res://Assets/Scenes/Nature/rock-c.tscn" id="3_2ap1d"]
+
+[node name="RockCircle" type="Node3D"]
+
+[node name="Rock-A" parent="." instance=ExtResource("1_juaxc")]
+transform = Transform3D(0.0138028, 0, 0, 0, 0.0138028, 0, 0, 0, 0.0138028, -0.017334, 0, 0.153742)
+
+[node name="Rock-B3" parent="." instance=ExtResource("2_1370j")]
+transform = Transform3D(0.000677373, 0.0201677, 0.0134293, -0.00200716, 0.013435, -0.0200751, -0.0241465, -0.000551021, 0.00204546, 0.0694483, 0, 0.165336)
+
+[node name="Rock-C4" parent="." instance=ExtResource("3_2ap1d")]
+transform = Transform3D(0.0110963, 0.0141181, -0.00759998, -0.000897265, 0.00977478, 0.016848, 0.0160086, -0.00923804, 0.00621222, 0.135144, 0, 0.0807439)
+
+[node name="Rock-A2" parent="." instance=ExtResource("1_juaxc")]
+transform = Transform3D(-0.000535222, 0, -0.0247866, -0.00947023, 0.0229114, 0.000204493, 0.0229061, 0.00947243, -0.000494616, 0.191593, 0, -0.0228047)
+
+[node name="Rock-C3" parent="." instance=ExtResource("3_2ap1d")]
+transform = Transform3D(-0.0151935, 0, 0.0123013, 0, 0.019549, 0, -0.0123013, 0, -0.0151935, 0.151783, 0, -0.11005)
+
+[node name="Rock-A4" parent="." instance=ExtResource("1_juaxc")]
+transform = Transform3D(-0.000232322, 0, 0.0137358, 0, 0.0137378, 0, -0.0137358, 0, -0.000232322, 0.070468, 0, -0.178857)
+
+[node name="Rock-B" parent="." instance=ExtResource("2_1370j")]
+transform = Transform3D(-0.0214091, 0, -0.0115691, -0.00656529, 0.0200371, 0.0121493, 0.00952581, 0.0138097, -0.0176279, -0.0032886, 0, -0.206766)
+
+[node name="Rock-A3" parent="." instance=ExtResource("1_juaxc")]
+transform = Transform3D(-0.0137926, 0, -0.000531303, 0, 0.0138028, 0, 0.000531303, 0, -0.0137926, -0.0783117, 0, -0.181566)
+
+[node name="Rock-C2" parent="." instance=ExtResource("3_2ap1d")]
+transform = Transform3D(-0.00550684, -0.0179798, 0.00515836, 0.00899585, 0.00216886, 0.0171633, -0.0163999, 0.00722703, 0.00768248, -0.166091, 0, -0.098504)
+
+[node name="Rock-C" parent="." instance=ExtResource("3_2ap1d")]
+transform = Transform3D(0.00261077, 0, -0.0247319, 0.0126582, 0.021365, 0.00133624, 0.021247, -0.0127285, 0.0022429, -0.189788, 0, -0.0184784)
+
+[node name="Rock-B2" parent="." instance=ExtResource("2_1370j")]
+transform = Transform3D(-0.0042162, 0.0121256, -0.0205383, -0.00585044, 0.0196937, 0.012828, 0.023122, 0.00719406, -0.000499275, -0.170775, 0, 0.0912997)
+
+[node name="Rock-B4" parent="." instance=ExtResource("2_1370j")]
+transform = Transform3D(-0.00754545, 0.00205796, 0.0229229, 0.00669258, 0.0232771, 0.000113196, -0.0220206, 0.0063693, -0.00782024, -0.0726554, 0, 0.130458)
+
+[node name="Rock-A5" parent="." instance=ExtResource("1_juaxc")]
+transform = Transform3D(0.0164533, 0, 0, 0, 0.0164533, 0, 0, 0, 0.0164533, -0.130484, 0, -0.162667)
