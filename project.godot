@@ -15,6 +15,11 @@ run/main_scene="uid://bvyl50l6ixsmn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
+
 [input]
 
 Forward={
@@ -83,3 +88,4 @@ Escape={
 3d_physics/layer_2="Static Environment"
 3d_physics/layer_3="Dynamic Environment"
 3d_physics/layer_4="Gravity Fields"
+3d_physics/layer_5="Force Fields"

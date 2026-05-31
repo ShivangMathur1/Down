@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://3wq4tb0vte8w"]
+[gd_scene load_steps=6 format=3 uid="uid://3wq4tb0vte8w"]
 
 [ext_resource type="PackedScene" uid="uid://do7375lrlcqn7" path="res://Assets/Scenes/Nature/rock_circle.tscn" id="1_24kya"]
-[ext_resource type="Texture2D" uid="uid://b4ick5v5e4qha" path="res://Assets/grass.jpg" id="1_s70bo"]
 [ext_resource type="PackedScene" uid="uid://bxdtbe7ago22r" path="res://Assets/Scenes/Nature/tree.tscn" id="2_s70bo"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lc8i"]
-albedo_texture = ExtResource("1_s70bo")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fnr3x"]
+albedo_color = Color(0.47685, 0.826645, 0.254215, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vfy22"]
 
@@ -14,7 +13,7 @@ radius = 1.08326
 
 [node name="Planet" type="CSGSphere3D"]
 transform = Transform3D(54.4882, 0, 0, 0, 54.4882, 0, 0, 0, 54.4882, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_6lc8i")
+material_override = SubResource("StandardMaterial3D_fnr3x")
 radial_segments = 16
 rings = 16
 

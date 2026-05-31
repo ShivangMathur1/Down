@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://l2ce28omlltd"]
+[gd_scene load_steps=13 format=3 uid="uid://l2ce28omlltd"]
 
 [ext_resource type="Script" uid="uid://dkp2keyg3dctr" path="res://Assets/Scenes/character_body_3d.gd" id="1_rgr6h"]
 
@@ -33,6 +33,9 @@ colors = PackedColorArray(0.00754902, 0.615191, 0.675781, 1, 0, 0.439767, 0.5781
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gsoyd"]
 gradient = SubResource("Gradient_i1u5x")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rgr6h"]
+radius = 0.375155
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 collision_mask = 6
@@ -84,13 +87,13 @@ value = 5.0
 nine_patch_stretch = true
 texture_progress = SubResource("GradientTexture2D_b65pp")
 
-[node name="X" type="VBoxContainer" parent="CanvasLayer"]
+[node name="Health" type="VBoxContainer" parent="CanvasLayer"]
 offset_left = 14.0
 offset_top = 92.0
 offset_right = 284.0
 offset_bottom = 119.0
 
-[node name="XBar" type="TextureProgressBar" parent="CanvasLayer/X"]
+[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer/Health"]
 layout_mode = 2
 size_flags_vertical = 3
 max_value = 5.0
@@ -99,3 +102,11 @@ value = 5.0
 nine_patch_stretch = true
 texture_under = SubResource("GradientTexture2D_gsoyd")
 texture_progress = SubResource("GradientTexture2D_gsoyd")
+
+[node name="FieldDetector" type="Area3D" parent="."]
+collision_mask = 24
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FieldDetector"]
+shape = SubResource("SphereShape3D_rgr6h")
+
+[connection signal="area_entered" from="FieldDetector" to="." method="_on_field_detector_area_entered"]

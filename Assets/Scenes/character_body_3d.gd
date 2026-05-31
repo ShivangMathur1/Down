@@ -31,6 +31,8 @@ func _ready() -> void:
 	fuel_reserve_bar.max_value = fuel_reserve
 	fuel_reserve_bar.value = fuel_reserve
 	
+	
+	
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Left click Mouse"):
@@ -43,6 +45,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		event is InputEventMouseMotion and
 		Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
 	)
+	print(event is InputEventMouseMotion, Input.mouse_mode == Input.MOUSE_MODE_CAPTURED)
 	if is_camera_motion:
 		_mouse_movement = event.screen_relative * mouse_sensitivity
 
@@ -108,3 +111,8 @@ func orient_character(delta: float):
 	elif rotation_axis.length() > 0:
 		var target_basis = Basis(rotation_axis.normalized(), rotation_angle) * transform.basis
 		transform.basis = target_basis
+
+
+func _on_field_detector_area_entered(area: Area3D) -> void:
+	if area.collision_layer == 16:
+		velocity += up_direction * 50

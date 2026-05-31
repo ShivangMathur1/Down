@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bvyl50l6ixsmn"]
+[gd_scene load_steps=20 format=3 uid="uid://bvyl50l6ixsmn"]
 
 [ext_resource type="PackedScene" uid="uid://l2ce28omlltd" path="res://Assets/Scenes/character_body_3d.tscn" id="1_1ipgw"]
 [ext_resource type="Texture2D" uid="uid://ul4vl05n3lva" path="res://Assets/qwantani_dusk_1_puresky_2k.exr" id="1_6bbw0"]
@@ -6,8 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://do7375lrlcqn7" path="res://Assets/Scenes/Nature/rock_circle.tscn" id="4_vfy22"]
 [ext_resource type="PackedScene" uid="uid://3wq4tb0vte8w" path="res://Assets/Scenes/planet.tscn" id="5_6lc8i"]
 [ext_resource type="PackedScene" uid="uid://dv24mw3gy02ae" path="res://Assets/Scenes/sempra.tscn" id="6_6bbw0"]
-[ext_resource type="Material" uid="uid://dggwupqjoy5ik" path="res://Assets/Materials/s_tornado.material" id="7_umutp"]
-[ext_resource type="ArrayMesh" uid="uid://c5cqo3k2sq0hp" path="res://Assets/Meshes/Tornado.res" id="8_o4bpx"]
+[ext_resource type="PackedScene" uid="uid://fd4nk35y7bvd" path="res://Assets/Scenes/tornado.tscn" id="7_p6hf8"]
 
 [sub_resource type="Animation" id="Animation_6lc8i"]
 length = 0.001
@@ -185,7 +184,11 @@ font_size = 20
 [node name="Sempra" parent="." instance=ExtResource("6_6bbw0")]
 transform = Transform3D(0.615441, 0, -0.788183, 0, 1, 0, 0.788183, 0, 0.615441, 125.665, 79.9891, 1.86848)
 
-[node name="Tornado" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.63297, 0, 0, 0, 1.63297, 0, 0, 0, 1.63297, -8.37728, 1.00253, 32.6651)
-material_override = ExtResource("7_umutp")
-mesh = ExtResource("8_o4bpx")
+[node name="Tornado" parent="." instance=ExtResource("7_p6hf8")]
+transform = Transform3D(1.40186, 0, 0, 0, 1.40186, 0, 0, 0, 1.40186, -28.8276, 0.0448544, 9.34458)
+
+[node name="Tornado2" parent="." instance=ExtResource("7_p6hf8")]
+transform = Transform3D(1.40186, 0, 0, 0, 1.40186, 0, 0, 0, 1.40186, -56.3028, 0.0448544, 12.521)
+
+[node name="Tornado3" parent="." instance=ExtResource("7_p6hf8")]
+transform = Transform3D(1.40186, 0, 0, 0, 1.40186, 0, 0, 0, 1.40186, -47.3742, 0.0448544, -22.2416)
